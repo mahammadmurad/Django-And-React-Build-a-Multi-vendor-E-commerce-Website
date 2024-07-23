@@ -1,11 +1,11 @@
 import {useAuthStore} from '../store/auth';
 import axios  from 'axios';
-import jwt_decode from 'jwt_decode';
+import jwt_decode from 'jwt-decode';
 import Cookies from 'js-cookie';
 
 export const login = async (email, password) => {
     try {
-        const {data, status} = await axios.post('user/token', {
+        const {data, status} = await axios.post('user/token/', {
             email,
             password
         })
@@ -22,7 +22,7 @@ export const login = async (email, password) => {
 
 export const register = async (full_name, email, phone,  password, password2) => {
     try {
-        const {data, status} = await axios.post('user/register', {
+        const {data, status} = await axios.post('user/register/', {
             full_name,
             email,
             phone,
@@ -45,8 +45,8 @@ export const  logout = () => {
 }
 
 export const setUser = async () => {
-    const accessToken = Cookie.get('access_token');
-    const refreshToken = Cookie.get('refresh_token');
+    const accessToken = Cookies.get('access_token');
+    const refreshToken = Cookies.get('refresh_token');
 
     if(!accessToken || !refreshToken){
         return;
