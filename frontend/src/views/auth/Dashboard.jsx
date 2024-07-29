@@ -7,10 +7,9 @@ function Dashboard() {
         state.isLoggedIn,
         state.user
     ])
-
     return (
     <>
-        {isLoggedIn()
+        {isLoggedIn
             ? <div>
                 <h1>Dashboard</h1>
                 <Link to={'/logout'} >Logout</Link>
@@ -18,6 +17,7 @@ function Dashboard() {
             : <div>
                 <h1>Home Page</h1>
                 <Link to={'/register'}>Register</Link>
+                <br />
                 <Link to={'/login'}>Login</Link>
             </div>        
         }
